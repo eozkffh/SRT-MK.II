@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "SRT Macro MARK.II",
+  "description": "SRT 매크로 개조",
+  "version": "1.1.3",
+  "permissions": [
+    "tabs",
+    "offscreen",
+    "contextMenus",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://etk.srail.kr/" ,
+    "https://discord.com/*"
+  ],
+  "icons": {
+      "128": "images/icon128.png"
+  },
+  "content_scripts": [ {
+    "all_frames": true,
+    "js": ["jquery-1.11.3.min.js", "content.js"],
+    "matches": ["https://etk.srail.kr/*"],
+    "run_at": "document_end"
+  }],
+  "background": {
+    "service_worker":"background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["images/btn_start.png"],
+      "matches": [
+        "*://*/*"
+      ]
+    },
+    {
+      "resources": ["images/btn_stop.png"],
+      "matches": [
+        "*://*/*"
+      ]
+    },
+    {
+      "resources": ["assets/tada.mp3"],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}
